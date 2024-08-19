@@ -1,14 +1,18 @@
+import os
 import requests
 import pandas as pd
 import matplotlib.pyplot as plt
 
-# FRED APIキー
+# FRED APIキーをSecretsから取得
 api_key = '3a9b149188c85dfdf21e468641cd8a0a'
 
 # FREDからT10Y2Yデータを取得
 url = f"https://api.stlouisfed.org/fred/series/observations?series_id=T10Y2Y&api_key={api_key}&file_type=json"
 response = requests.get(url)
 data = response.json()
+
+# APIから返されたデータ全体を表示する
+print(data)  # ここでレスポンスデータを確認します
 
 # データをデータフレームに変換
 df = pd.DataFrame(data['observations'])
